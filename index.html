@@ -1,0 +1,144 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hant-TW" xml:lang="zh-Hant-TW">
+<head>
+<title>Reapers in the Oasis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+
+body{
+	/* font-family: 'Courier New'; */
+	font-family: 'Noto Sans TC', sans-serif;
+	font-size: '20px';
+	margin-left: 3%;
+	margin-right: 3%;
+	color:#ffffff; 
+	background-color:#111111;
+}
+
+a {
+	color: white;
+	/* text-decoration: none; */
+	text-decoration:underline;
+	text-decoration-style: dotted;
+	text-decoration-color: gold;
+}
+
+a:hover {
+	color: gold;
+	text-decoration: none;
+}
+
+span.nfttext {
+	display: inline-block;
+	width: 280px;
+}
+
+span.nftdisplay {
+	display: inline-block;
+	width: 320px;
+}
+
+span + span {
+	margin-bottom: 2em;
+}
+
+button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 6px 13px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 18px;
+	font-family: 'Noto Sans TC', sans-serif;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+
+select {
+	/* appearance: none; */
+	/* background-color: transparent; */
+	border: none;
+	/* padding: 0 1em 0 0; */
+	padding: 4px 10px;
+	/* margin: 0; */
+	margin: 4px 4px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	cursor: pointer;
+}
+
+input {
+	/* appearance: none; */
+	/* background-color: transparent; */
+	border: none;
+	/* padding: 0 1em 0 0; */
+	padding: 4px 10px;
+	/* margin: 0; */
+	margin: 4px 4px;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	cursor: pointer;
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+<!-- <script src="https://unpkg.com/vue@2"></script> -->
+</head>
+<body>
+
+
+<!-- Header -->
+<h1>Reapers in the Oasis</h1>
+<h3>
+	Show Reapers
+	<select name="query-type" id="query-type">
+		<option value="query-listed">listed</option>
+		<option value="query-sold">sold</option>
+	</select>
+	in the past
+	<select name="query-period-hours" id="query-period-hours">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="4">4</option>
+	  <option value="6" selected="selected">6</option>
+	  <option value="12">12</option>
+	  <option value="24">24</option>
+	  <option value="48">48</option>
+	  <option value="72">72</option>
+	</select>
+hours&nbsp;&nbsp;<button type="button" onclick="shakeIt()">Submit</button>
+</h3>
+This is an *unofficial* webpage interface to the <a href="https://oasis.cash/" target="_blank">OASIS&thinsp;<img src="icons8-external-link-16_goldish.png"></a> Smart Contract <a href="https://www.smartscan.cash/address/0x3b968177551a2aD9fc3eA06F2F41d88b22a081F7" target="_blank">V2&thinsp;<img src="icons8-external-link-16_goldish.png"></a>. It queries the Event Logs of the Smart Contract and marks up <a href="https://reapers.cash" target="_blank">Reapers&thinsp;<img src="icons8-external-link-16_goldish.png"></a> related entries. NFT information is then obtained by sending queries to the <a href="https://www.smartscan.cash/address/0x48973dbAC0d46B939CD12A7250eFBA965e8a8cf2" target="_blank">Reapers Smart Contract&thinsp;<img src="icons8-external-link-16_goldish.png"></a>.
+<br><br>
+<!-- <button type="button" onclick="getCurrentPrice()">看價錢</button><br> -->
+<!-- <br> -->
+<!-- <hr> -->
+<!-- <div id="price-of-reaper"></div> -->
+<hr>
+<div id="list-of-reapers" style="text-align: center;"></div>
+
+
+
+<!-- Footer -->
+<hr><br>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+<script src="script/NFTEXV2-abi.js"></script>
+<script src="script/ERC721-abi.js"></script>
+<script src="script/connectWalletAndNetwork.js"></script>
+<script src="script/oasis-dates.js"></script>
+
+有問題不一定要找 <a href="https://noise.cash/u/liwi">https://noise.cash/u/liwi</a>，因為他也不一定會。
+<br><br>
+<div id="js-log" style="color: gray"></div>
+</body>
+</html>
